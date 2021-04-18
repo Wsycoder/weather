@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-04-17 12:21:18
- * @LastEditTime: 2021-04-17 13:49:52
+ * @LastEditTime: 2021-04-18 16:27:38
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /weatherapp/webapp/src/components/Entry.vue
@@ -38,7 +38,7 @@ export default {
  
 .startApp{
     text-align: center;
-    font-size: 4rem;
+    font-size: 5rem;
     width: 100%;
     color: white;
     background-color:#EE7600;

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-04-17 13:22:14
- * @LastEditTime: 2021-04-18 16:09:52
+ * @LastEditTime: 2021-04-18 16:32:31
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /weatherapp/webapp/src/components/City.vue
@@ -68,36 +68,7 @@ export default {
   },
   mounted:function(){
     let that = this
-    var url= `https://devapi.qweather.com/v7/weather/now?location=101010300&key=a200d5e99db34b6691569ae0f63a6f8e`;
-    var request = new XMLHttpRequest();
-    request.open('GET',url,false);
-    request.send()
-    var res1 = JSON.parse(request.response)
-
-    var url= `https://devapi.qweather.com/v7/weather/3d?location=101010300&key=a200d5e99db34b6691569ae0f63a6f8e`;
-    var request = new XMLHttpRequest();
-    request.open('GET',url,false);
-    request.send()
-    var res2 = JSON.parse(request.response)
-  
-    var temp = document.getElementById('temp')   //获取实时温度
-    temp.innerHTML = res1.now.temp + "℃"
-    var max = document.getElementById('max')     //最高温度
-    max.innerHTML = res2.daily[0].tempMax + "℃"
-    var min = document.getElementById('min')     //最低温度
-    min.innerHTML = res2.daily[0].tempMin + "℃"   
-    var weather = document.getElementById('weather')    //天气情况 阴/晴...
-    weather.innerHTML = res1.now.text 
-
-    if(res1.now.text == "晴"){
-      that.weather = sunny
-    }else if(res1.now.text == "阴"){
-      that.weather = cloudy
-    }else if(res1.now.text == "雨"){
-      that.weather = rain
-    }else if(res1.now.text == "雪"){
-      that.weather = snow
-    }  
+    getWeather(that);
   }
     
   ,
@@ -119,37 +90,7 @@ export default {
           that.num++;
         }
       }
-      var url= `https://devapi.qweather.com/v7/weather/now?location=${that.citycode[that.num]}&key=a200d5e99db34b6691569ae0f63a6f8e`;
-      var request = new XMLHttpRequest();
-      request.open('GET',url,false);
-      request.send()
-      var res1 = JSON.parse(request.response)
-
-      var url= `https://devapi.qweather.com/v7/weather/3d?location=${that.citycode[that.num]}&key=a200d5e99db34b6691569ae0f63a6f8e`;
-      var request = new XMLHttpRequest();
-      request.open('GET',url,false);
-      request.send()
-      var res2 = JSON.parse(request.response)
-    
-      var temp = document.getElementById('temp')   //获取实时温度
-      temp.innerHTML = res1.now.temp + "℃"
-      var max = document.getElementById('max')     //最高温度
-      max.innerHTML = res2.daily[0].tempMax + "℃"
-      var min = document.getElementById('min')     //最低温度
-      min.innerHTML = res2.daily[0].tempMin + "℃"   
-      var weather = document.getElementById('weather')    //天气情况 阴/晴...
-      weather.innerHTML = res1.now.text 
- 
-      if(res1.now.text == "晴"){
-        // that.weather = sunny
-        that.weather = sunny
-      }else if(res1.now.text == "阴"){
-        that.weather = cloudy
-      }else if(res1.now.text == "雨"){
-        that.weather = rain
-      }else if(res1.now.text == "雪"){
-        that.weather = snow
-      }  
+      getWeather(that);
     },
     
    
@@ -166,45 +107,51 @@ export default {
 }
 
 #temp {
-    position: absolute;
-    top: 65%;
+  position: absolute;
+    top: 68%;
     width: 10%;
     left: 45%;
     text-align: center;
     height: 5%;
-    font-size: 3rem;
+    font-size: 4rem;
     color: white;
+    font-weight: 800;
 }
 
 #min {
     position: absolute;
-    top: 75%;
+    top: 80%;
     width: 10%;
     left: 30%;
     text-align: center;
     height: 5%;
-    font-size: 3rem;
+    font-size: 3.5rem;
     color: white;
+    font-weight: 400;
+
 }
 #max {
     position: absolute;
-    top: 75%;
+    top: 80%;
     width: 10%;
     left: 60%;
     text-align: center;
     height: 5%;
-    font-size: 3rem;
+    font-size: 3.5rem;
     color: white;
+    font-weight: 400;
+
 }
 #weather{
   position: absolute;
-    top: 85%;
+    top: 90%;
     width: 10%;
     left: 45%;
     text-align: center;
     height: 5%;
-    font-size: 3rem;
+    font-size: 4rem;
     color: white;
+    font-weight: 800;
 }
 .cityItem {
     display: flex;
